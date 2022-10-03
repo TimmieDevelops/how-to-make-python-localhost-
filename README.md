@@ -1,17 +1,19 @@
 # how-to-make-python-localhost-
 
-# 1. Make Sure use this command to install Flask
+# 1. Make Sure use this command to install Sanic
 
 # 2. Code Down Here!
 
 ```
-from flask import Flask
+from sanic import Sanic
+from sanic.response import text
 
-app = Flask(__name__)
+app = Sanic("MyHelloWorldApp")
 
-@app.route("/")
-def main():
-    return "Hello Welcome!"
+@app.get("/")
+async def hello_world(request):
+    return text("Hello, world.")
+
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=7000)
+    app.run(host="localhost", port=69)  
